@@ -17,6 +17,7 @@ import { AuthService } from './_services/auth.service';
 import { JwtModule } from '@auth0/angular-jwt';
 import { AuthGuard } from './_guards/auth.guard';
 import { HttpClientModule } from '@angular/common/http';
+import { LoginComponent } from './login/login.component';
 
 
 
@@ -30,7 +31,8 @@ export function tokenGetter() { return localStorage.getItem('token'); }
       NavMenuComponent,
       SettingsComponent,
       StatisticsComponent,
-      RegisterComponent
+      RegisterComponent,
+      LoginComponent
    ],
    imports: [
       HttpClientModule,

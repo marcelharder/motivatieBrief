@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using api.DAL.data;
-using api.DAL.Models;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 
@@ -19,7 +18,7 @@ public class Seed
             {
                 using (var hmac = new System.Security.Cryptography.HMACSHA1())
             {
-                user.Username = user.Username.ToLower();
+                user.username = user.username.ToLower();
                 user.PasswordSalt = hmac.Key;
                 user.PasswordHash = hmac.ComputeHash(System.Text.Encoding.UTF8.GetBytes("password"));
             }

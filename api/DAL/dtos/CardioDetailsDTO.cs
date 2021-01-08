@@ -1,13 +1,13 @@
 using System;
-namespace api.DAL.data
+
+namespace api.DAL.dtos
 {
-    public class Cardio
+    public class CardioDetailsDTO
     {
         public int Id { get; set; }
         public string center_id { get; set; }
         public int registry_id { get; set; }
         public string cassette_id { get; set; }
-        public byte[] hemodynamics { get; set; }
         public string contributor_id { get; set; }
         public int patient_age { get; set; }
         public int patient_gender { get; set; }

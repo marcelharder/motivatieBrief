@@ -4,8 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using api.DAL;
+using api.DAL.code;
+using api.DAL.data;
 using api.DAL.Implementations;
 using api.DAL.Interfaces;
+using AutoMapper;
+using Cardiohelp.data.Implementations;
+using Cardiohelp.data.Interfaces;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -17,6 +22,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
+
 using Pomelo.EntityFrameworkCore.MySql.Infrastructure;
 
 namespace api
@@ -37,11 +43,7 @@ namespace api
 
             // services.AddDbContext<dataContext>(x => x.UseMySql(Configuration.GetConnectionString("SQLconnection")));
 
-            /* services.AddDbContext<dataContext>(options => options
-            .UseMySql(Configuration.GetConnectionString("SQLconnection"),
-            mySqlOptions => mySqlOptions.ServerVersion(new Version(10, 5, 4), ServerType.MariaDb)
-            .EnableRetryOnFailure())
-             );  */
+           
 
             var _connectionString = Configuration.GetConnectionString("SQLConnection");
             services.AddDbContext<dataContext>(
@@ -51,14 +53,15 @@ namespace api
                 )
             );
 
-
-
-
-
             services.AddScoped<IAuthRepository, AuthRepository>();
+            services.AddScoped<IUser, UserRepository>();
+            services.AddScoped<ICardioRepository, CardioRepository>();
+            services.AddScoped<IHospitalRepository, HospitalRepository>();
+            services.AddScoped<Dropdownlists>();
+            services.AddScoped<SpecialMaps>();
+            services.AddScoped<CSVProducer>();
 
-
-
+            services.AddAutoMapper(System.Reflection.Assembly.GetExecutingAssembly());
 
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 .AddJwtBearer(options =>
@@ -98,6 +101,7 @@ namespace api
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+                endpoints.MapFallbackToController("Index","Fallback");
             });
         }
     }

@@ -1,17 +1,14 @@
 using System;
-using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
-using System.Linq;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using api.DAL.dtos;
 using api.DAL.Interfaces;
-using api.DAL.Models;
+using api.DAL.data;
 
 namespace OnlineValveApplication_02.Controllers
 {
@@ -26,17 +23,15 @@ namespace OnlineValveApplication_02.Controllers
             _config = config;
             _repo = repo;
         }
-
         [HttpPost("register")]
         public async Task<IActionResult> Register(UserForRegister ufr)
         {
             ufr.username = ufr.username.ToLower();
             if (await _repo.UserExists(ufr.username)) { return BadRequest("User already exists ..."); }
-            User test = new User { Username = ufr.username };
+            User test = new User { username = ufr.username };
             var createdUser = await _repo.Register(test, ufr.password);
             return StatusCode(201);
         }
-
         [HttpPost("login")]
         public async Task<IActionResult> Login(UserForLogin ufl)
         {
@@ -44,9 +39,9 @@ namespace OnlineValveApplication_02.Controllers
             if (userFromRepo == null) { return BadRequest("Unauthorized"); }
             // generate a token
             var claims = new[] {
-        new Claim(ClaimTypes.NameIdentifier, userFromRepo.UserId.ToString()),
-        new Claim(ClaimTypes.Name, userFromRepo.Username),
-        new Claim(ClaimTypes.Role, userFromRepo.Role)
+        new Claim(ClaimTypes.NameIdentifier, userFromRepo.Id.ToString()),
+        new Claim(ClaimTypes.Name, userFromRepo.username),
+        new Claim(ClaimTypes.Role, userFromRepo.user_role)
         };
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config.GetSection("AppSettings:Token").Value));
             var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha512Signature);
@@ -62,6 +57,5 @@ namespace OnlineValveApplication_02.Controllers
             );
 
         }
-
     }
 }

@@ -13,11 +13,16 @@ namespace api.DAL.code
 {
     public class SpecialMaps
     {
-        private IHttpContextAccessor _http;
+        
         private IHospitalRepository _hos;
+        private IHttpContextAccessor _http;
         private IMapper _map;
         private Dropdownlists _drops;
-        public SpecialMaps(IHttpContextAccessor http, IHospitalRepository hos, IMapper map, Dropdownlists drops)
+        public SpecialMaps(
+        IHttpContextAccessor http, 
+        IHospitalRepository hos, 
+        IMapper map, 
+        Dropdownlists drops)
         {
             _http = http;
             _map = map;
@@ -76,7 +81,6 @@ namespace api.DAL.code
         }
         public Cardio mapToCardio(CardioDetailsDTO ctd, Cardio c)
         {
-           
             return _map.Map<CardioDetailsDTO, Cardio>(ctd, c);
         }
         public hospital mapToHospitalAsync(hospitalForUpdateDTO td, hospital hospital_before){

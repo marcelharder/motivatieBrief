@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace api.Migrations
 {
-    public partial class drietables : Migration
+    public partial class initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -166,6 +166,29 @@ namespace api.Migrations
                 {
                     table.PrimaryKey("PK_Hospitals", x => x.Id);
                 });
+
+            migrationBuilder.CreateTable(
+                name: "Users",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    deployed_url = table.Column<string>(type: "longtext CHARACTER SET utf8mb4", nullable: true),
+                    paid_till = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    created = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    username = table.Column<string>(type: "longtext CHARACTER SET utf8mb4", nullable: true),
+                    PasswordHash = table.Column<byte[]>(type: "longblob", nullable: true),
+                    PasswordSalt = table.Column<byte[]>(type: "longblob", nullable: true),
+                    user_role = table.Column<string>(type: "longtext CHARACTER SET utf8mb4", nullable: true),
+                    active = table.Column<string>(type: "longtext CHARACTER SET utf8mb4", nullable: true),
+                    contributor_id = table.Column<string>(type: "longtext CHARACTER SET utf8mb4", nullable: true),
+                    center_id = table.Column<string>(type: "longtext CHARACTER SET utf8mb4", nullable: true),
+                    photoUrl = table.Column<string>(type: "longtext CHARACTER SET utf8mb4", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Users", x => x.Id);
+                });
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -175,6 +198,9 @@ namespace api.Migrations
 
             migrationBuilder.DropTable(
                 name: "Hospitals");
+
+            migrationBuilder.DropTable(
+                name: "Users");
         }
     }
 }

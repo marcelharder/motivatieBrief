@@ -1,8 +1,4 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using api.DAL;
 using api.DAL.code;
 using api.DAL.data;
@@ -14,16 +10,13 @@ using Cardiohelp.data.Interfaces;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
-
-using Pomelo.EntityFrameworkCore.MySql.Infrastructure;
 
 namespace api
 {
@@ -40,6 +33,7 @@ namespace api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            services.TryAddSingleton<Microsoft.AspNetCore.Http.IHttpContextAccessor, HttpContextAccessor>(); 
 
             // services.AddDbContext<dataContext>(x => x.UseMySql(Configuration.GetConnectionString("SQLconnection")));
 
@@ -75,7 +69,17 @@ namespace api
                         ValidateAudience = false
                     };
                 });
-
+            services.AddCors(options =>
+                       {
+                           options.AddPolicy("CorsPolicy",
+                           builder =>
+                           {
+                               builder.WithOrigins("http://localhost:4200")
+                                                   .AllowAnyHeader()
+                                                   .AllowCredentials()
+                                                   .AllowAnyMethod();
+                           });
+                       });
 
 
         }
@@ -89,19 +93,20 @@ namespace api
             }
 
             //app.UseHttpsRedirection();
+            app.UseCors("CorsPolicy");
 
             app.UseRouting();
 
             app.UseAuthentication();
             app.UseAuthorization();
 
-            app.UseDefaultFiles();
-            app.UseStaticFiles();
+            //app.UseDefaultFiles();
+            //app.UseStaticFiles();
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
-                endpoints.MapFallbackToController("Index","Fallback");
+                //endpoints.MapFallbackToController("Index","Fallback");
             });
         }
     }

@@ -5,6 +5,12 @@
             "driver": "SQLite",
             "name": "test",
             "database": "${workspaceFolder:walking-skeleton-03}/api/test.db"
+        },
+        {
+            "previewLimit": 50,
+            "driver": "SQLite",
+            "name": "nog",
+            "database": "${workspaceFolder:motivatieBrief}/api/test.db"
         }
     ],
     "sqltools.useNodeRuntime": true

@@ -23,9 +23,7 @@ const routes: Routes = [
           { path: 'companyadmin', component: CompanyadminComponent },
          
           { path: 'superuser', component: SuperuserComponent },
-          { path: 'settings', component: SettingsComponent },
           { path: 'tutorials', component: TutorialsComponent },
-          { path: 'statistics', component: StatisticsComponent },
           { path: 'companysettings/:id', component: SettingsCompanyComponent },
           { path: 'expiry/:id', component: ExpiryComponent },
           { path: 'addProduct/:id', component: AddProductComponent, resolve: {valve: ValveResolver} },

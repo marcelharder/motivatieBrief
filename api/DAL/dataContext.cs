@@ -10,6 +10,7 @@ namespace api.DAL
         public DbSet<User> Users { get; set; }
         public DbSet<hospital> Hospitals { get; set; }
         public DbSet<Cardio> Cardios { get; set; }
+        public DbSet<Brief> Briefs { get; set; }
          
        
     }

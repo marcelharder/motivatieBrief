@@ -8,8 +8,6 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
-import { SettingsComponent } from './settings/settings.component';
-import { StatisticsComponent } from './statistics/statistics.component';
 import { RegisterComponent } from './register/register.component';
 import { AlertifyService } from './_services/alertify.service';
 import { AuthService } from './_services/auth.service';
@@ -18,21 +16,23 @@ import { JwtModule } from '@auth0/angular-jwt';
 import { AuthGuard } from './_guards/auth.guard';
 import { HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './login/login.component';
+import { Brief_detailsComponent } from './brief_details/brief_details.component';
+import { MakelaarComponent } from './makelaar/makelaar.component';
 
 
 
 export function tokenGetter() { return localStorage.getItem('token'); }
 
 @NgModule({
-   declarations: [
+   declarations: [		
       AppComponent,
       HomeComponent,
       AboutComponent,
       NavMenuComponent,
-      SettingsComponent,
-      StatisticsComponent,
       RegisterComponent,
-      LoginComponent
+      LoginComponent,
+      Brief_detailsComponent,
+      MakelaarComponent
    ],
    imports: [
       HttpClientModule,

@@ -10,7 +10,7 @@ namespace api.DAL.data
     public class Dropdownlists
     {
 
-        XDocument doc = XDocument.Load("data/dropdownlists.xml");
+        XDocument doc = XDocument.Load("DAL/dropdownlists.xml");
 
 
         public List<Class_Item> getReasonForUse()

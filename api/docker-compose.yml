@@ -1,0 +1,32 @@
+# Use root/example as user/password credentials
+version: '3.7'
+
+services:
+
+  db:
+    image: mariadb:10.1
+    restart: on-failure
+    ports:
+     - 3306:3306
+    volumes:
+      - mariadata:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: Control@123
+      MYSQL_DATABASE: mysql
+      MYSQL_ROOT_USER: root
+  
+  onlinevalve:
+     image: marcel:v15
+     restart: always
+     volumes:
+      - mariadata:/root/.aspnet/DataProtection-Keys
+     ports:
+       - 8080:5000
+     depends_on: 
+       - db
+     entrypoint: ["/app/wait-for-it.sh", "db:3306", "-t","120","--", "dotnet", "api.dll"]
+   
+
+volumes:
+  mariadata:
+    

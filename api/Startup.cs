@@ -35,17 +35,17 @@ namespace api
             services.AddControllers();
             services.TryAddSingleton<Microsoft.AspNetCore.Http.IHttpContextAccessor, HttpContextAccessor>(); 
 
-            // services.AddDbContext<dataContext>(x => x.UseMySql(Configuration.GetConnectionString("SQLconnection")));
+            services.AddDbContext<dataContext>(x => x.UseSqlite(Configuration.GetConnectionString("SQLconnection")));
 
            
 
-            var _connectionString = Configuration.GetConnectionString("SQLConnection");
+            /* var _connectionString = Configuration.GetConnectionString("SQLConnection");
             services.AddDbContext<dataContext>(
-                options => options.UseMySql(
+                options => options.UseSqlite(
                     _connectionString,
                     ServerVersion.AutoDetect(_connectionString)
                 )
-            );
+            ); */
 
             services.AddScoped<IAuthRepository, AuthRepository>();
             services.AddScoped<IUser, UserRepository>();
@@ -100,13 +100,13 @@ namespace api
             app.UseAuthentication();
             app.UseAuthorization();
 
-            //app.UseDefaultFiles();
-            //app.UseStaticFiles();
+            app.UseDefaultFiles();
+            app.UseStaticFiles();
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
-                //endpoints.MapFallbackToController("Index","Fallback");
+                endpoints.MapFallbackToController("Index","Fallback");
             });
         }
     }

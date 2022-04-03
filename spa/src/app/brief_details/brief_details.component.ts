@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AlertifyService } from '../_services/alertify.service';
 
 @Component({
   selector: 'app-brief_details',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class Brief_detailsComponent implements OnInit {
 
-  constructor() { }
+  constructor(private alertify: AlertifyService) { }
 
   ngOnInit() {
   }
 
+  uploadPicture() {
+    this.alertify.message("uploading picture comes here ....");
+  }
 }
+
+

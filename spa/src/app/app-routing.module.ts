@@ -5,6 +5,8 @@ import { RegisterComponent } from './register/register.component';
 import { AboutComponent } from './about/about.component';
 import { AuthGuard } from './_guards/auth.guard';
 import { LoginComponent } from './login/login.component';
+import { Brief_detailsComponent } from './brief_details/brief_details.component';
+import { MakelaarComponent } from './makelaar/makelaar.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -16,7 +18,11 @@ const routes: Routes = [
       runGuardsAndResolvers: 'always',
       canActivate: [AuthGuard],
       children: [
-         
+        { path: 'brief_details/:id', component: Brief_detailsComponent },  
+        { path: 'makelaar', component: MakelaarComponent },
+
+
+
       /*  { path: 'profile', component: ProfileComponent, resolve: { user: ProfileResolver }, canDeactivate: [PreventUnsavedChanges] },
           { path: 'surgeon', component: SurgeonComponent },
           { path: 'admin', component: AdminComponent },
@@ -25,7 +31,7 @@ const routes: Routes = [
           { path: 'superuser', component: SuperuserComponent },
           { path: 'tutorials', component: TutorialsComponent },
           { path: 'companysettings/:id', component: SettingsCompanyComponent },
-          { path: 'expiry/:id', component: ExpiryComponent },
+          { path: 'brief_details/:id', component: ExpiryComponent },
           { path: 'addProduct/:id', component: AddProductComponent, resolve: {valve: ValveResolver} },
  */
 

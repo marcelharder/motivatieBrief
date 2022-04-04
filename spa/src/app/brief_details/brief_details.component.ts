@@ -11,11 +11,12 @@ export class Brief_detailsComponent implements OnInit {
   constructor(private alertify: AlertifyService) { }
 
   ngOnInit() {
+    // get the suff from the resolver
   }
 
-  uploadPicture() {
-    this.alertify.message("uploading picture comes here ....");
-  }
+  uploadPicture() {this.alertify.message("uploading picture comes here ....");}
+  cancel(){this.alertify.message("cancel");}
+  savePrint(){this.alertify.message("save en print");}
 }
 
 

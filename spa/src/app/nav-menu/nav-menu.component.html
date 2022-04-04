@@ -8,24 +8,12 @@
               
        
 
-      <!--   <div class="dropdown ml-2 mr-2" dropdown>
-          <a class="dropdown-toggle"  dropdownToggle>| Products </a>
-          <div class="dropdown-menu mt-3" *dropdownMenu>
-            <a class="dropdown-item" href="#" [routerLink]="['/companyadmin']">In Hospitals</a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#" [routerLink]="['/search']">Search on serial#</a>
-          </div>
-        </div> -->
+      
         <ul class="navbar-nav flex-grow">
           <li class="nav-item" > 
             <a class="nav-link text-dark" [routerLink]="['/']">Home</a> 
          </li>
-          <li class="nav-item" *ngIf="!adminLogged()"> 
-            <a class="nav-link text-dark" [routerLink]="['/listOfRegistries']">Registries</a> 
-          </li>
-          <li class="nav-item" *ngIf="!adminLogged()"> 
-            <a class="nav-link text-dark" [routerLink]="['/']">Statistics (under construction) </a> 
-          </li>
+          
           <li class="nav-item"  *ngIf="adminLogged()"> 
             <a class="nav-link text-dark" [routerLink]="['/users']">Users </a> 
           </li> 

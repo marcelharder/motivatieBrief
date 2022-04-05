@@ -33,8 +33,18 @@ export class LoginComponent implements OnInit {
 
             this.auth.changeCurrentRole(this.auth.decodedToken.role);
 
-          //  if (this.auth.decodedToken.role === 'admin') {this.router.navigate(['/users']);}
-          //  else {this.router.navigate(['/listOfRegistries']);}
+            if (this.auth.decodedToken.role === 'makelaar') {
+                this.router.navigate(['/makelaar']);
+            }
+            else {
+                if (this.auth.decodedToken.role === 'admin') {
+                    // this will only change selectable items in navbar
+                 }
+                else {
+                    this.router.navigate(['/brief_details/' + this.auth.decodedToken.nameid]);
+                }
+            }
+
         },
             error => {
                 // say log in failed, show register button

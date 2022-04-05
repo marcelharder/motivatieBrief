@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Brief } from '../_models/brief';
 import { AlertifyService } from '../_services/alertify.service';
+import { PdfService } from '../_services/pdf.service';
 
 @Component({
   selector: 'app-brief_details',
@@ -21,7 +22,7 @@ export class Brief_detailsComponent implements OnInit {
 
   };
 
-  constructor(private alertify: AlertifyService) { }
+  constructor(private alertify: AlertifyService, private pdf: PdfService) { }
 
   ngOnInit() {
     // get the suff from the resolver
@@ -29,12 +30,18 @@ export class Brief_detailsComponent implements OnInit {
     this.br.line_2 = "hallo lijn 2";
     this.br.line_3 = "hallo lijn 3";
     this.br.line_4 = "hallo lijn 4";
+    this.br.line_5 = "hallo lijn 5";
+    this.br.line_6 = "hallo lijn 6";
     this.br.photoUrl = "https://res.cloudinary.com/marcelcloud/image/upload/v1649145510/P1000100.jpg";
   }
 
   uploadPicture() {this.alertify.message("uploading picture comes here ....");}
   cancel(){this.alertify.message("cancel");}
-  savePrint(){this.alertify.message("save en print");}
+  savePrint(){
+    this.alertify.message("save en print");
+    this.pdf.constructPdf(this.br.UserId).subscribe((next)=>{})
+  
+  }
 }
 
 

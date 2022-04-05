@@ -24,6 +24,15 @@ namespace Cardiohelp.Controllers
             _special = special;
         }
         [HttpGet]
+        [Route("api/getUserByEmail/{id}")]
+        public async Task<UserForReturnDto> GetAsync(string email)
+        {
+            var help = await _user.getUserByEmail(email);
+            return await _special.mapToUserForReturnAsync(help);
+        }
+
+
+        [HttpGet]
         [Route("api/getUser/{id}", Name = "GetUser")]
         public async Task<UserForReturnDto> GetAsync(int id)
         {

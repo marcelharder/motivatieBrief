@@ -10,6 +10,8 @@ namespace Cardiohelp.data.Interfaces
         Task<User> getUserDetails(int id);
         Task<PagedList<User>> GetUsers(UserParams p);
         Task<PagedList<User>> GetUsersPerCenter(UserParams p);
+
+        Task<User> getUserByEmail(string email);
         Task<bool> SaveAll();
         
         void Delete<T>(T entity) where T : class;

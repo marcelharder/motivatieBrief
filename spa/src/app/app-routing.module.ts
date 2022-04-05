@@ -9,7 +9,7 @@ import { Brief_detailsComponent } from './brief_details/brief_details.component'
 import { MakelaarComponent } from './makelaar/makelaar.component';
 
 const routes: Routes = [
-  { path: 'home', component: HomeComponent },
+  { path: '', component: HomeComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
   { path: 'about', component: AboutComponent },
@@ -19,7 +19,7 @@ const routes: Routes = [
       canActivate: [AuthGuard],
       children: [
         { path: 'brief_details/:id', component: Brief_detailsComponent },  
-        { path: 'makelaar', component: MakelaarComponent },
+        { path: 'makelaar', component: MakelaarComponent }
 
 
 

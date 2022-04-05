@@ -4,10 +4,10 @@
       
       <button 
       class="btn btn-success btn-xs ml-1" 
-      (click)="uploadPicture" style="float:right">Save and Print</button>
+      (click)="savePrint()" style="float:right">Save and Print</button>
       <button 
       class="btn btn-warning btn-xs" 
-      (click)="uploadPicture" style="float:right">Cancel</button>
+      (click)="cancel()" style="float:right">Cancel</button>
     </div>
     <div class="card-body">
       <div class="row">
@@ -54,10 +54,12 @@
       </div>
       <div class="row">
         <div class="col-sm-12">
-          <input type="text" class="form-control mb-2" [(ngModel)]="binding" name="text-5">
+          <input type="text" class="form-control mb-2" [(ngModel)]="br.line_5" name="text-5">
         </div>
+        </div>
+        <div class="row">
         <div class="col-sm-12">
-          <input type="text" class="form-control mb-2" [(ngModel)]="binding" name="text-6">
+          <input type="text" class="form-control mb-2" [(ngModel)]="br.line_6" name="text-6">
         </div>
       </div>
     </div>

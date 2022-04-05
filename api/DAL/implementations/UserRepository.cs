@@ -31,6 +31,10 @@ namespace Cardiohelp.data.Implementations
         {
              return await _context.Users.FirstOrDefaultAsync(m => m.Id == id);
         }
+          public async Task<User> getUserByEmail(string email)
+        {
+             return await _context.Users.FirstOrDefaultAsync(m => m.email == email);
+        }
 
         public async Task<PagedList<User>> GetUsers(UserParams p)
         {

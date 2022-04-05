@@ -36,6 +36,7 @@ export function tokenGetter() { return localStorage.getItem('token'); }
    ],
    imports: [
       HttpClientModule,
+      FormsModule,
       BrowserModule,
       FormsModule,
       AppRoutingModule,

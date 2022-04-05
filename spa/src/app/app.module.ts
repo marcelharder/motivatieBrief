@@ -18,6 +18,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './login/login.component';
 import { Brief_detailsComponent } from './brief_details/brief_details.component';
 import { MakelaarComponent } from './makelaar/makelaar.component';
+import { BriefResolver } from './_resolvers/brief.resolver';
 
 
 
@@ -49,7 +50,7 @@ export function tokenGetter() { return localStorage.getItem('token'); }
          }
      }),
    ],
-   providers: [AlertifyService, AuthService, AuthGuard],
+   providers: [AlertifyService, AuthService, AuthGuard, BriefResolver],
    bootstrap: [
       AppComponent
    ]

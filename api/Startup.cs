@@ -6,7 +6,7 @@ using api.DAL.models;
 using api.DAL.Implementations;
 using api.DAL.Interfaces;
 using AutoMapper;
-using Cardiohelp.data.Implementations;
+using Cardiohelp.DAL.Implementations;
 using Cardiohelp.data.Interfaces;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
@@ -18,6 +18,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
+using System.Text.Json.Serialization;
 
 namespace api
 {
@@ -34,11 +35,14 @@ namespace api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-            services.TryAddSingleton<Microsoft.AspNetCore.Http.IHttpContextAccessor, HttpContextAccessor>(); 
+            
+            services.AddControllers().AddJsonOptions(x =>
+              x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.Preserve);
+            services.TryAddSingleton<Microsoft.AspNetCore.Http.IHttpContextAccessor, HttpContextAccessor>();
 
             services.AddDbContext<dataContext>(x => x.UseSqlite(Configuration.GetConnectionString("SQLconnection")));
 
-           
+
 
             /* var _connectionString = Configuration.GetConnectionString("SQLConnection");
             services.AddDbContext<dataContext>(
@@ -52,6 +56,7 @@ namespace api
             services.AddScoped<IUser, UserRepository>();
             services.AddScoped<ICardioRepository, CardioRepository>();
             services.AddScoped<IHospitalRepository, HospitalRepository>();
+            services.AddScoped<IBrief, Cardiohelp.DAL.Implementations.Brief>();
             services.AddScoped<Dropdownlists>();
             services.AddScoped<SpecialMaps>();
             services.AddScoped<CSVProducer>();
@@ -107,7 +112,7 @@ namespace api
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
-                endpoints.MapFallbackToController("Index","Fallback");
+                endpoints.MapFallbackToController("Index", "Fallback");
             });
         }
     }

@@ -9,7 +9,7 @@ using api.DAL.Interfaces;
 using Cardiohelp.data.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
-namespace Cardiohelp.data.Implementations
+namespace Cardiohelp.DAL.Implementations
 {
     public class CardioRepository : ICardioRepository
     {

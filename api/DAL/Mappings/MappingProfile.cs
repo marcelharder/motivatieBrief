@@ -29,6 +29,7 @@ namespace api.DAL.Mappings
             .ForMember(dest => dest.center_id, opt => opt.MapFrom(src => src.center_id.getHospitalName())); 
 
 
+            CreateMap<Brief, BriefForReturnDto>(); 
 
 
 

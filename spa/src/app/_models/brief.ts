@@ -1,6 +1,5 @@
 export interface Brief {
-    UserId: number;
-    Id: number;
+    id: number;
     photoUrl: string;
     line_1: string;
     line_2: string;

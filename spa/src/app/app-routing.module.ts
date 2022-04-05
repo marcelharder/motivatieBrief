@@ -7,6 +7,7 @@ import { AuthGuard } from './_guards/auth.guard';
 import { LoginComponent } from './login/login.component';
 import { Brief_detailsComponent } from './brief_details/brief_details.component';
 import { MakelaarComponent } from './makelaar/makelaar.component';
+import { BriefResolver } from './_resolvers/brief.resolver';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -18,7 +19,7 @@ const routes: Routes = [
       runGuardsAndResolvers: 'always',
       canActivate: [AuthGuard],
       children: [
-        { path: 'brief_details/:id', component: Brief_detailsComponent },  
+        { path: 'brief_details/:id', component: Brief_detailsComponent, resolve:{br: BriefResolver} },  
         { path: 'makelaar', component: MakelaarComponent }
 
 

@@ -11,9 +11,7 @@ export class UserService {
 
 constructor(private http: HttpClient) { }
 
-getUserByEmail(email: string){
-  return this.http.get<User>(this.baseUrl + "user/getKoperByName/" + email);
-}
+getUserByEmail(email: string){return this.http.get<User>(this.baseUrl + "getUserByEmail/" + email);}
 
 
 }

@@ -51,6 +51,7 @@ namespace api.DAL.code
             h.paid_till = help.paid_till;
             h.user_role = help.user_role;
             h.username = help.username;
+            h.photoUrl = help.photoUrl;
             return h;
         } 
         // public UserForReturnDto mapToUserForReturn(User help){ return _map.Map<User, UserForReturnDto>(help);}
@@ -90,11 +91,16 @@ namespace api.DAL.code
         public HemoForReturnDTO mapToHemoForReturn(Cardio c){
             return _map.Map<Cardio, HemoForReturnDTO>(c);
         }
+         public BriefForReturnDto mapToBriefForReturn(Brief c){
+            return _map.Map<Brief, BriefForReturnDto>(c);
+        }
         public int getCurrentUserId()
         {
             var userId = _http.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
             return Convert.ToInt32(userId);
         }
+
+        
         private string getIndication(int indication)
         {
             var help = "";

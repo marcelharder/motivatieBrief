@@ -7,7 +7,7 @@ using api.DAL.helpers;
 using Cardiohelp.data.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
-namespace Cardiohelp.data.Implementations{
+namespace Cardiohelp.DAL.Implementations{
     public class HospitalRepository : IHospitalRepository
     {
         private dataContext _context;

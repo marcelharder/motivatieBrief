@@ -51,5 +51,6 @@ loggedIn() {
     const token = localStorage.getItem('token');
     return !this.jwtHelper.isTokenExpired(token);
 }
+logOut(){localStorage.setItem('token', null)}
 
 }

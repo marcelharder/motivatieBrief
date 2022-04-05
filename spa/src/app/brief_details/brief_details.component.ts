@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router} from '@angular/router';
 import { Brief } from '../_models/brief';
 import { AlertifyService } from '../_services/alertify.service';
+import { AuthService } from '../_services/auth.service';
+import { BriefService } from '../_services/brief.service';
 import { PdfService } from '../_services/pdf.service';
 
 @Component({
@@ -11,8 +14,7 @@ import { PdfService } from '../_services/pdf.service';
 export class Brief_detailsComponent implements OnInit {
 
   br:Brief = {
-    UserId:0,
-    Id:0,
+    id:0,
     photoUrl: "",
     line_1: '', line_2: '', line_3: '', line_4: '', line_5: '', line_6: '', line_7: '', line_8: '', line_9: '', line_10: '',
     line_11: '', line_12: '', line_13: '', line_14: '', line_15: '', line_16: '', line_17: '', line_18: '', line_19: '', line_20: '',
@@ -22,25 +24,33 @@ export class Brief_detailsComponent implements OnInit {
 
   };
 
-  constructor(private alertify: AlertifyService, private pdf: PdfService) { }
+  constructor(private alertify: AlertifyService, 
+    private auth: AuthService,
+    private pdf: PdfService, 
+    private route: ActivatedRoute,
+    private router: Router, 
+    private brief: BriefService) { }
 
   ngOnInit() {
     // get the suff from the resolver
-    this.br.line_1 = "hallo lijn 1";
-    this.br.line_2 = "hallo lijn 2";
-    this.br.line_3 = "hallo lijn 3";
-    this.br.line_4 = "hallo lijn 4";
-    this.br.line_5 = "hallo lijn 5";
-    this.br.line_6 = "hallo lijn 6";
-    this.br.photoUrl = "https://res.cloudinary.com/marcelcloud/image/upload/v1649145510/P1000100.jpg";
+    this.route.data.subscribe((data: {br: Brief})=>{
+      this.br = data.br;
+    })
+    
   }
 
   uploadPicture() {this.alertify.message("uploading picture comes here ....");}
   cancel(){this.alertify.message("cancel");}
   savePrint(){
     this.alertify.message("save en print");
-    this.pdf.constructPdf(this.br.UserId).subscribe((next)=>{})
-  
+    this.brief.saveBrief(this.br).subscribe((next)=>{
+      // if successfully saved
+      this.pdf.constructPdf(this.br.id).subscribe((next)=>{})
+    }, error => this.alertify.error(error), ()=>
+    
+    {
+      this.router.navigate(['/']); 
+      this.auth.logOut()})
   }
 }
 

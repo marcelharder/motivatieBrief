@@ -1,10 +1,21 @@
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
+using api.DAL;
 using api.DAL.Interfaces;
+using Microsoft.EntityFrameworkCore;
 
-namespace Cardiohelp.data.Implementations
+namespace Cardiohelp.DAL.Implementations
 {
     public class Brief : IBrief
     {
+
+        private dataContext _context;
+
+        public Brief(dataContext context)
+        {
+            _context = context;
+        }
         public void Add<T>(T entity) where T : class
         {
             throw new System.NotImplementedException();
@@ -15,19 +26,50 @@ namespace Cardiohelp.data.Implementations
             throw new System.NotImplementedException();
         }
 
-        public Task<api.DAL.models.Brief> getBrief(int id)
+        public async Task<api.DAL.models.Brief> getBrief(int id)
         {
-            throw new System.NotImplementedException();
+            var us = await _context.Users.Include(a => a.briefs).FirstOrDefaultAsync(x => x.Id == id);
+            if (us != null)
+            {
+                var test = new List<api.DAL.models.Brief>();
+                test = us.briefs.ToList();
+                if (test.Count > 0) { return test[0]; }
+                else
+                {
+                    // generate empty brief
+                    var newBrief = new api.DAL.models.Brief();
+                    newBrief.PhotoUrl = "https://res.cloudinary.com/marcelcloud/image/upload/v1574199666/sibput7sssqzfenyozlv.jpg";
+                    us.briefs.Add(newBrief);
+                    Update(us);
+                    if (await SaveAll()) { 
+                        var updatedUser = await _context.Users.Include(a => a.briefs).FirstOrDefaultAsync(x => x.Id == id);
+                        var newBriefs = new List<api.DAL.models.Brief>();
+                        test = updatedUser.briefs.ToList();
+                        return test[0]; }
+                    return null;
+                }
+            }
+            return null;
+
         }
 
-        public Task<bool> SaveAll()
+        public async Task<bool> SaveAll()
         {
-            throw new System.NotImplementedException();
+            return await _context.SaveChangesAsync() > 0;
+        }
+
+        public async Task<bool> saveBrief(api.DAL.models.Brief br)
+        {
+            Update(br);
+            if(await SaveAll()){
+                return true;
+            }
+            return false;
         }
 
         public void Update<T>(T entity) where T : class
         {
-            throw new System.NotImplementedException();
+            _context.Update(entity);
         }
     }
 }

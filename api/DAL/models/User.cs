@@ -16,6 +16,7 @@ public class User
         public string contributor_id { get; set; }
         public string center_id { get; set; }
         public string photoUrl { get; set; }
+        public string email { get; set; }
         public ICollection<Brief> briefs {get; set;}
     }
 }

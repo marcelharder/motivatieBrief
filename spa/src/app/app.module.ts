@@ -19,13 +19,16 @@ import { LoginComponent } from './login/login.component';
 import { Brief_detailsComponent } from './brief_details/brief_details.component';
 import { MakelaarComponent } from './makelaar/makelaar.component';
 import { BriefResolver } from './_resolvers/brief.resolver';
+import { PhotoeditorComponent } from './photoeditor/photoeditor.component';
+
+import {FileUploadModule} from 'ng2-file-upload';
 
 
 
 export function tokenGetter() { return localStorage.getItem('token'); }
 
 @NgModule({
-   declarations: [		
+   declarations: [			
       AppComponent,
       HomeComponent,
       AboutComponent,
@@ -33,10 +36,12 @@ export function tokenGetter() { return localStorage.getItem('token'); }
       RegisterComponent,
       LoginComponent,
       Brief_detailsComponent,
-      MakelaarComponent
+      MakelaarComponent,
+      PhotoeditorComponent
    ],
    imports: [
       HttpClientModule,
+      FileUploadModule,
       FormsModule,
       BrowserModule,
       FormsModule,

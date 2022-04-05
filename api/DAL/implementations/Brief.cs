@@ -3,6 +3,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using api.DAL;
 using api.DAL.Interfaces;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 
 namespace Cardiohelp.DAL.Implementations
@@ -11,10 +12,12 @@ namespace Cardiohelp.DAL.Implementations
     {
 
         private dataContext _context;
+          private readonly IWebHostEnvironment _env;
 
-        public Brief(dataContext context)
+        public Brief(dataContext context, IWebHostEnvironment env)
         {
             _context = context;
+            _env = env;
         }
         public void Add<T>(T entity) where T : class
         {
@@ -70,6 +73,20 @@ namespace Cardiohelp.DAL.Implementations
         public void Update<T>(T entity) where T : class
         {
             _context.Update(entity);
+        }
+
+          public int deletePDF(int id)
+        {
+            var id_string = id.ToString();
+            var pathToFile = _env.ContentRootPath + "/assets/pdf/";
+            var file_name = pathToFile + id_string + ".pdf";
+
+            if (System.IO.File.Exists(file_name))
+            {
+                System.IO.File.Delete(file_name);
+                System.Threading.Thread.Sleep(20);
+            }
+            return 1;
         }
     }
 }

@@ -16,4 +16,5 @@ constructor(private http: HttpClient) { }
 getBrief(koper:number){return this.http.get<Brief>(this.baseUrl + 'getBrief/' + koper)};
 saveBrief(br: Brief){return this.http.post(this.baseUrl + 'updateBrief', br)}
 
+
 }

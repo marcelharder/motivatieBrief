@@ -11,6 +11,6 @@ baseUrl= environment.apiUrl;
 
 constructor(private http: HttpClient) { }
 
-constructPdf(id: number){ return this.http.get<any>(this.baseUrl + 'pdf/getKoperPdf/' + id);}
+constructPdf(id: number){ return this.http.get<any>(this.baseUrl + 'getPDF/' + id);}
 
 }

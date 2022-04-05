@@ -19,6 +19,8 @@ using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
 using System.Text.Json.Serialization;
+using api.DAL.implementations;
+using api.Helpers;
 
 namespace api
 {
@@ -35,7 +37,8 @@ namespace api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-            
+            services.Configure<CloudinarySettings>(Configuration.GetSection("CloudinarySettings"));
+
             services.AddControllers().AddJsonOptions(x =>
               x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.Preserve);
             services.TryAddSingleton<Microsoft.AspNetCore.Http.IHttpContextAccessor, HttpContextAccessor>();
@@ -57,6 +60,7 @@ namespace api
             services.AddScoped<ICardioRepository, CardioRepository>();
             services.AddScoped<IHospitalRepository, HospitalRepository>();
             services.AddScoped<IBrief, Cardiohelp.DAL.Implementations.Brief>();
+            services.AddScoped<IComposeBrief, composePdf>();
             services.AddScoped<Dropdownlists>();
             services.AddScoped<SpecialMaps>();
             services.AddScoped<CSVProducer>();

@@ -12,7 +12,7 @@ import { PdfService } from '../_services/pdf.service';
   styleUrls: ['./brief_details.component.css']
 })
 export class Brief_detailsComponent implements OnInit {
-
+  showPhoto = 0;
   br:Brief = {
     id:0,
     photoUrl: "",
@@ -38,20 +38,31 @@ export class Brief_detailsComponent implements OnInit {
     })
     
   }
+  showPhotoEditor(){if(this.showPhoto === 1){return true;}}
+  updatePhoto(photoUrl: string){this.br.photoUrl = photoUrl; this.showPhoto = 0;}
 
-  uploadPicture() {this.alertify.message("uploading picture comes here ....");}
+  uploadPicture() {
+    this.showPhoto = 1;
+    this.alertify.message("uploading picture comes here ....");}
   cancel(){this.alertify.message("cancel");}
   savePrint(){
     this.alertify.message("save en print");
     this.brief.saveBrief(this.br).subscribe((next)=>{
       // if successfully saved
-      this.pdf.constructPdf(this.br.id).subscribe((next)=>{})
+     // this.pdf.constructPdf(this.br.id).subscribe((next)=>{})
     }, error => this.alertify.error(error), ()=>
     
     {
       this.router.navigate(['/']); 
       this.auth.logOut()})
   }
+
+  
+
+
+
+
+
 }
 
 

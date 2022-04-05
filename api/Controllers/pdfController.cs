@@ -21,10 +21,11 @@ namespace Cardiohelp.Controllers
             _cpbr = cpbr;
 
         }
-          [Route("api/getPDF/{id}")]
+        
+        [Route("api/getPDF/{id}")]
         public async Task<IActionResult> Get(int id)
         {
-           
+            _br.deletePDF(id);
             await _cpbr.composeAsync(id); //get the final report and composes a pdf, which is stored in assets/pdf/73764743.pdf
 
             var id_string = id.ToString();

@@ -13,6 +13,7 @@
       <div class="row">
        
         <div class="col-sm-6">
+          <div *ngIf="!showPhotoEditor()">
           <div class="row">
             <div class="col-sm-12">
               <img src={{br.photoUrl}} height="100%" width="100%">
@@ -24,7 +25,11 @@
               class="btn btn-success btn-xs mt-1 mb-1" 
               (click)="uploadPicture()" style="float:right">Upload another picture</button></div>
           </div>
-          
+        </div>
+        <div *ngIf="showPhotoEditor()">
+          <app-photoeditor [userId]="br.id"   (getMemberPhotoChange)="updatePhoto($event)"></app-photoeditor>
+         
+        </div>
           
 
 

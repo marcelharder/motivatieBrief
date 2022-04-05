@@ -11,6 +11,7 @@ namespace api.DAL.Interfaces
         void Update<T>(T entity) where T : class;
         void Add<T>(T entity) where T : class; 
         Task<bool> SaveAll();
+        int deletePDF(int id);
 
 
 

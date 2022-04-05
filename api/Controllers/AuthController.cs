@@ -8,7 +8,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using api.DAL.dtos;
 using api.DAL.Interfaces;
-using api.DAL.data;
+using api.DAL.models;
 
 namespace OnlineValveApplication_02.Controllers
 {

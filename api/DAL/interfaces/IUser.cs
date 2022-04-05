@@ -1,5 +1,5 @@
 using System.Threading.Tasks;
-using api.DAL.data;
+using api.DAL.models;
 using api.DAL.helpers;
 
 

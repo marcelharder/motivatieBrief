@@ -1,7 +1,7 @@
 using System.Linq;
 using System.Threading.Tasks;
 using api.DAL;
-using api.DAL.data;
+using api.DAL.models;
 using api.DAL.helpers;
 using Cardiohelp.data.Interfaces;
 using Microsoft.EntityFrameworkCore;

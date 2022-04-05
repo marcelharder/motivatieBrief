@@ -1,11 +1,12 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using api.DAL.models;
 using System.Xml.Linq;
 using System.Xml.Serialization;
 using Microsoft.AspNetCore.Hosting;
 
-namespace api.DAL.data
+namespace api.DAL.seeding
 {
     public class Dropdownlists
     {

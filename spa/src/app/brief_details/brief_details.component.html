@@ -15,7 +15,7 @@
         <div class="col-sm-6">
           <div class="row">
             <div class="col-sm-12">
-              <img src="../../assets/images/IMG_0862.JPG" height="100%" width="100%">
+              <img src={{br.photoUrl}} height="100%" width="100%">
             </div>
           </div>
           <div class="row">
@@ -32,20 +32,20 @@
         <div class="col-sm-6">
           <div class="row">
             <div class="col-sm-12">
-              <input type="text" class="form-control mb-2" [(ngModel)]="binding">
+              <input type="text" class="form-control mb-2" [(ngModel)]="br.line_1" name="text-1">
             </div>
           </div><div class="row">
             <div class="col-sm-12">
-              <input type="text" class="form-control mb-2" [(ngModel)]="binding">
+              <input type="text" class="form-control mb-2" [(ngModel)]="br.line_2"  name="text-2">
             </div>
           </div>
           <div class="row">
             <div class="col-sm-12">
-              <input type="text" class="form-control mb-2" [(ngModel)]="binding">
+              <input type="text" class="form-control mb-2" [(ngModel)]="br.line_3"  name="text-3">
             </div>
           </div><div class="row">
             <div class="col-sm-12">
-              <input type="text" class="form-control mb-2" [(ngModel)]="binding">
+              <input type="text" class="form-control mb-2" [(ngModel)]="br.line_4" name="text-4">
             </div>
           </div>
 
@@ -54,10 +54,10 @@
       </div>
       <div class="row">
         <div class="col-sm-12">
-          <input type="text" class="form-control mb-2" [(ngModel)]="binding">
+          <input type="text" class="form-control mb-2" [(ngModel)]="binding" name="text-5">
         </div>
         <div class="col-sm-12">
-          <input type="text" class="form-control mb-2" >
+          <input type="text" class="form-control mb-2" [(ngModel)]="binding" name="text-6">
         </div>
       </div>
     </div>

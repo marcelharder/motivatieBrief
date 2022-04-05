@@ -1,6 +1,6 @@
 
 
-using api.DAL.data;
+using api.DAL.models;
 using api.DAL.dtos;
 using api.DAL.helpers;
 using AutoMapper;

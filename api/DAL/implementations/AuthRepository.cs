@@ -2,7 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using api.DAL.Interfaces;
 using System;
 using System.Threading.Tasks;
-using api.DAL.data;
+using api.DAL.models;
 
 namespace api.DAL.Implementations
 {

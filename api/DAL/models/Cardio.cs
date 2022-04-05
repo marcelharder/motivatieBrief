@@ -1,5 +1,5 @@
 using System;
-namespace api.DAL.data
+namespace api.DAL.models
 {
     public class Cardio
     {

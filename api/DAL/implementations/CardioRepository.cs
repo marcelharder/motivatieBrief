@@ -3,7 +3,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using api.DAL;
 using api.DAL.code;
-using api.DAL.data;
+using api.DAL.models;
 using api.DAL.helpers;
 using api.DAL.Interfaces;
 using Cardiohelp.data.Interfaces;

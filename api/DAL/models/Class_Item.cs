@@ -1,4 +1,4 @@
-namespace api.DAL.data{
+namespace api.DAL.models{
     public class Class_Item
     {
         public int value { get; set; }

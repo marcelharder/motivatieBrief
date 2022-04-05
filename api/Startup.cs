@@ -1,7 +1,8 @@
 using System.Text;
 using api.DAL;
 using api.DAL.code;
-using api.DAL.data;
+using api.DAL.seeding;
+using api.DAL.models;
 using api.DAL.Implementations;
 using api.DAL.Interfaces;
 using AutoMapper;

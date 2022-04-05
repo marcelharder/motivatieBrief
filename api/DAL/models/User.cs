@@ -1,5 +1,7 @@
 using System;
-namespace api.DAL.data {
+using System.Collections.Generic;
+
+namespace api.DAL.models {
 public class User
     {
         public int Id { get; set; }
@@ -14,5 +16,6 @@ public class User
         public string contributor_id { get; set; }
         public string center_id { get; set; }
         public string photoUrl { get; set; }
+        public ICollection<Brief> briefs {get; set;}
     }
 }

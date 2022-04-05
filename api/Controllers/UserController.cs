@@ -7,7 +7,7 @@ using Cardiohelp.data.Interfaces;
 using api.DAL.code;
 using api.DAL.dtos;
 using api.DAL.helpers;
-using api.DAL.data;
+using api.DAL.models;
 
 namespace Cardiohelp.Controllers
 {

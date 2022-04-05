@@ -2,10 +2,11 @@ using System;
 using System.Collections.Generic;
 using System.Security.Claims;
 using System.Threading.Tasks;
-using api.DAL.data;
+using api.DAL.models;
 using api.DAL.dtos;
 using api.DAL.helpers;
 using AutoMapper;
+using api.DAL.seeding;
 using Cardiohelp.data.Interfaces;
 using Microsoft.AspNetCore.Http;
 

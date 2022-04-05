@@ -16,7 +16,176 @@ namespace api.Migrations
             modelBuilder
                 .HasAnnotation("ProductVersion", "5.0.0");
 
-            modelBuilder.Entity("api.DAL.data.Cardio", b =>
+            modelBuilder.Entity("api.DAL.models.Brief", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("PhotoUrl")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("line_1")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("line_10")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("line_11")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("line_12")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("line_13")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("line_14")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("line_15")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("line_16")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("line_17")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("line_18")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("line_19")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("line_2")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("line_20")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("line_21")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("line_22")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("line_23")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("line_24")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("line_25")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("line_26")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("line_27")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("line_28")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("line_29")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("line_3")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("line_30")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("line_31")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("line_32")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("line_33")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("line_34")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("line_35")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("line_36")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("line_37")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("line_38")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("line_39")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("line_4")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("line_40")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("line_41")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("line_42")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("line_43")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("line_44")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("line_45")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("line_46")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("line_47")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("line_48")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("line_49")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("line_5")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("line_50")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("line_6")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("line_7")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("line_8")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("line_9")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Briefs");
+                });
+
+            modelBuilder.Entity("api.DAL.models.Cardio", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -402,7 +571,7 @@ namespace api.Migrations
                     b.ToTable("Cardios");
                 });
 
-            modelBuilder.Entity("api.DAL.data.User", b =>
+            modelBuilder.Entity("api.DAL.models.User", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -446,7 +615,7 @@ namespace api.Migrations
                     b.ToTable("Users");
                 });
 
-            modelBuilder.Entity("api.DAL.data.hospital", b =>
+            modelBuilder.Entity("api.DAL.models.hospital", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -485,6 +654,22 @@ namespace api.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Hospitals");
+                });
+
+            modelBuilder.Entity("api.DAL.models.Brief", b =>
+                {
+                    b.HasOne("api.DAL.models.User", "User")
+                        .WithMany("briefs")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("api.DAL.models.User", b =>
+                {
+                    b.Navigation("briefs");
                 });
 #pragma warning restore 612, 618
         }

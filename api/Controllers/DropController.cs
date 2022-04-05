@@ -1,5 +1,6 @@
 using System.Collections.Generic;
-using api.DAL.data;
+using api.DAL.models;
+using api.DAL.seeding;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 

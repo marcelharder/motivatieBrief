@@ -1,4 +1,4 @@
-using api.DAL.data;
+using api.DAL.models;
 using Microsoft.EntityFrameworkCore;
 
 namespace api.DAL

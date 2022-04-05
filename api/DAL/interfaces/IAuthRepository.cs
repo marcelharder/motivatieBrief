@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using api.DAL.data;
+using api.DAL.models;
 
 namespace api.DAL.Interfaces
 {

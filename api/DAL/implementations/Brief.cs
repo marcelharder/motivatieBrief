@@ -15,7 +15,7 @@ namespace Cardiohelp.data.Implementations
             throw new System.NotImplementedException();
         }
 
-        public Task<api.DAL.data.Brief> getBrief(int id)
+        public Task<api.DAL.models.Brief> getBrief(int id)
         {
             throw new System.NotImplementedException();
         }

@@ -1,0 +1,57 @@
+export interface Brief {
+    UserId: number;
+    Id: number;
+    photoUrl: string;
+    line_1: string;
+    line_2: string;
+    line_3: string;
+    line_4: string;
+    line_5: string;
+    line_6: string;
+    line_7: string;
+    line_8: string;
+    line_9: string;
+    line_10: string;
+    line_11: string;
+    line_12: string;
+    line_13: string;
+    line_14: string;
+    line_15: string;
+    line_16: string;
+    line_17: string;
+    line_18: string;
+    line_19: string;
+    line_20: string;
+    line_21: string;
+    line_22: string;
+    line_23: string;
+    line_24: string;
+    line_25: string;
+    line_26: string;
+    line_27: string;
+    line_28: string;
+    line_29: string;
+    line_30: string;
+    line_31: string;
+    line_32: string;
+    line_33: string;
+    line_34: string;
+    line_35: string;
+    line_36: string;
+    line_37: string;
+    line_38: string;
+    line_39: string;
+    line_40: string;
+    line_41: string;
+    line_42: string;
+    line_43: string;
+    line_44: string;
+    line_45: string;
+    line_46: string;
+    line_47: string;
+    line_48: string;
+    line_49: string;
+    line_50: string;
+  
+   
+}

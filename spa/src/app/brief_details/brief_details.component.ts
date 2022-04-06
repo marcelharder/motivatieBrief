@@ -13,6 +13,7 @@ import { PdfService } from '../_services/pdf.service';
 })
 export class Brief_detailsComponent implements OnInit {
   showPhoto = 0;
+  mkrole = 0;
   br:Brief = {
     id:0,
     photoUrl: "",
@@ -36,20 +37,29 @@ export class Brief_detailsComponent implements OnInit {
     this.route.data.subscribe((data: {br: Brief})=>{
       this.br = data.br;
     })
+    // check if the makelaar is loggedIn()
+    this.auth.currentRole.subscribe((next)=>{
+      if(next === 'makelaar'){this.mkrole = 1;}
+    })
     
   }
+  showIfRoleIsMakelaar(){if(this.mkrole === 1){return true;}}
   showPhotoEditor(){if(this.showPhoto === 1){return true;}}
   updatePhoto(photoUrl: string){this.br.photoUrl = photoUrl; this.showPhoto = 0;}
 
   uploadPicture() {
     this.showPhoto = 1;
     this.alertify.message("uploading picture comes here ....");}
+
   cancel(){this.alertify.message("cancel");}
+
+  removeKoper(){this.alertify.message("remove koper now");}
+
   savePrint(){
     this.alertify.message("save en print");
     this.brief.saveBrief(this.br).subscribe((next)=>{
       // if successfully saved
-     // this.pdf.constructPdf(this.br.id).subscribe((next)=>{})
+       this.pdf.constructPdf(this.br.id).subscribe((next)=>{})
     }, error => this.alertify.error(error), ()=>
     
     {

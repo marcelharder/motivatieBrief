@@ -25,7 +25,7 @@ initializeUploader() {
     let test = '';
 
     if (this.userId !== 0) {
-        test = this.baseUrl + 'addPhoto/' + this.userId
+        test = this.baseUrl + 'addBriefPhoto/' + this.userId
     }
     
 
@@ -47,9 +47,8 @@ initializeUploader() {
 
     this.uploader.onSuccessItem = (item, response, status, headers) => {
         if (response) {
-            debugger;
-            const res: any = JSON.parse(response);
-           if (this.userId !== 0) { this.getMemberPhotoChange.emit(res.photoUrl); }
+           const res: any = JSON.parse(response);
+           if (this.userId !== 0) { this.getMemberPhotoChange.emit(res.PhotoUrl); }
         }
     };
 }

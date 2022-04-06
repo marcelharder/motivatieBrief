@@ -6,8 +6,11 @@
       class="btn btn-success btn-xs ml-1" 
       (click)="savePrint()" style="float:right">Save and Print</button>
       <button 
-      class="btn btn-warning btn-xs" 
+      class="btn btn-warning btn-xs ml-1" 
       (click)="cancel()" style="float:right">Cancel</button>
+      <button *ngIf="showIfRoleIsMakelaar()" 
+      class="btn btn-warning btn-xs" 
+      (click)="removeKoper()" style="float:right">removeKoper</button>
     </div>
     <div class="card-body">
       <div class="row">
@@ -27,7 +30,7 @@
           </div>
         </div>
         <div *ngIf="showPhotoEditor()">
-          <app-photoeditor [userId]="br.id"   (getMemberPhotoChange)="updatePhoto($event)"></app-photoeditor>
+          <app-photoeditor [userId]="br.id" (getMemberPhotoChange)="updatePhoto($event)"></app-photoeditor>
          
         </div>
           

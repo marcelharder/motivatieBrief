@@ -67,7 +67,7 @@ namespace Cardiohelp.Controllers
         }
 
         [HttpPost]
-        [Route("api/addPhoto/{id}")]
+        [Route("api/addBriefPhoto/{id}")]
         public async Task<IActionResult> PostPhoto(int id,PhotoForCreationDto photoDto)
         {
 

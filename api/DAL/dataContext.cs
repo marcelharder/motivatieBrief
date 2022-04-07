@@ -11,6 +11,7 @@ namespace api.DAL
         public DbSet<hospital> Hospitals { get; set; }
         public DbSet<Cardio> Cardios { get; set; }
         public DbSet<Brief> Briefs { get; set; }
+        public DbSet<Personalia> Personas { get; set; }
          
        
     }

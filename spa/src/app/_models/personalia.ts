@@ -1,0 +1,55 @@
+export interface personalia {
+    PersId: number;
+    lastname: string;
+    lastname_partner: string;
+    first_names: string;
+    first_names_partner: string;
+    place_birth: string;
+    place_birth_partner: string;
+    dob: Date;
+    db_pertner: Date;
+    street: string;
+    street_partner: string;
+    pobox: string;
+    pobox_partner: string;
+    city: string;
+    city_partner: string;
+    phone_home: string;
+    phone_home_partner: string;
+    mob: string;
+    mob_partner: string;
+    email: string;
+    email_partner: string;
+    bstaat: string;
+    bstaat_partner: string;
+    hgoederen: string;
+    hgoederen_partner: string;
+    reg_partnership: string;
+    living_together: string;
+    legitimatie_soort: string;
+    legitimatie_soort_partner: string;
+    legitimatie_no: string;
+    legitimatie_no_partner: string;
+    notaris: string;
+    notaris_adres: string;
+    bedrag_roerende_zaken: string;
+    partner_medekoper: string;
+    line_35: string;
+    line_36: string;
+    line_37: string;
+    line_38: string;
+    line_39: string;
+    line_40: string;
+    line_41: string;
+    line_42: string;
+    line_43: string;
+    line_44: string;
+    line_45: string;
+    line_46: string;
+    line_47: string;
+    line_48: string;
+    line_49: string;
+    line_50: string;
+    
+
+}

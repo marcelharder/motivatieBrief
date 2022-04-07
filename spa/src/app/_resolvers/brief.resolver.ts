@@ -8,8 +8,7 @@ import { BriefService } from '../_services/brief.service';
 @Injectable()
 
 export class BriefResolver implements Resolve<Brief> {
-    pageNumber = 1;
-    pageSize = 12;
+  
     
     constructor(private briefservice: BriefService,
         private router: Router, private alertify: AlertifyService) {
@@ -18,7 +17,7 @@ export class BriefResolver implements Resolve<Brief> {
     resolve(route: ActivatedRouteSnapshot): Observable<Brief> {
          return this.briefservice.getBrief(route.params.id).pipe(catchError(error => {
             this.alertify.error('Problem retrieving data');
-            this.router.navigate(['/home']);
+            this.router.navigate(['/']);
             return of(null);
         }));
 

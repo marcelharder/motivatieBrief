@@ -61,6 +61,7 @@ namespace api.DAL.implementations
                 iTextSharp.text.pdf.PdfWriter writer = iTextSharp.text.pdf.PdfWriter.GetInstance(doc, fs);
                 doc.SetMargins(0.0F, 10.0F, 70.0F, 10.0F);
                 compose_pdf(doc, writer, _br);
+                
             }
         }
         private int compose_pdf(iTextSharp.text.Document doc, iTextSharp.text.pdf.PdfWriter wri, Brief br)

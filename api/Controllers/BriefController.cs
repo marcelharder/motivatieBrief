@@ -16,7 +16,7 @@ namespace Cardiohelp.Controllers
     [Authorize]
     public class BriefController : ControllerBase
     {
-       private IUser _user;
+        private IUser _user;
         private SpecialMaps _special;
 
         private readonly IOptions<api.Helpers.CloudinarySettings> _cloudinaryConfig;

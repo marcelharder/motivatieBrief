@@ -22,13 +22,15 @@ import { BriefResolver } from './_resolvers/brief.resolver';
 import { PhotoeditorComponent } from './photoeditor/photoeditor.component';
 
 import {FileUploadModule} from 'ng2-file-upload';
+import { PersonaliaComponent } from './personalia/personalia.component';
+import { PersonaliaResolver } from './_resolvers/personalia.resolver';
 
 
 
 export function tokenGetter() { return localStorage.getItem('token'); }
 
 @NgModule({
-   declarations: [			
+   declarations: [				
       AppComponent,
       HomeComponent,
       AboutComponent,
@@ -37,7 +39,8 @@ export function tokenGetter() { return localStorage.getItem('token'); }
       LoginComponent,
       Brief_detailsComponent,
       MakelaarComponent,
-      PhotoeditorComponent
+      PhotoeditorComponent,
+      PersonaliaComponent
    ],
    imports: [
       HttpClientModule,
@@ -55,7 +58,7 @@ export function tokenGetter() { return localStorage.getItem('token'); }
          }
      }),
    ],
-   providers: [AlertifyService, AuthService, AuthGuard, BriefResolver],
+   providers: [AlertifyService, AuthService, AuthGuard, BriefResolver, PersonaliaResolver],
    bootstrap: [
       AppComponent
    ]

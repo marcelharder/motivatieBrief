@@ -18,5 +18,6 @@ public class User
         public string photoUrl { get; set; }
         public string email { get; set; }
         public ICollection<Brief> briefs {get; set;}
+        public ICollection<Personalia> pers {get; set;}
     }
 }

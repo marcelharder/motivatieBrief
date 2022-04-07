@@ -12,7 +12,7 @@ namespace Cardiohelp.DAL.Implementations
     {
 
         private dataContext _context;
-          private readonly IWebHostEnvironment _env;
+        private readonly IWebHostEnvironment _env;
 
         public Brief(dataContext context, IWebHostEnvironment env)
         {
@@ -44,11 +44,13 @@ namespace Cardiohelp.DAL.Implementations
                     newBrief.PhotoUrl = "https://res.cloudinary.com/marcelcloud/image/upload/v1574199666/sibput7sssqzfenyozlv.jpg";
                     us.briefs.Add(newBrief);
                     Update(us);
-                    if (await SaveAll()) { 
+                    if (await SaveAll())
+                    {
                         var updatedUser = await _context.Users.Include(a => a.briefs).FirstOrDefaultAsync(x => x.Id == id);
                         var newBriefs = new List<api.DAL.models.Brief>();
                         test = updatedUser.briefs.ToList();
-                        return test[0]; }
+                        return test[0];
+                    }
                     return null;
                 }
             }
@@ -64,7 +66,8 @@ namespace Cardiohelp.DAL.Implementations
         public async Task<bool> saveBrief(api.DAL.models.Brief br)
         {
             Update(br);
-            if(await SaveAll()){
+            if (await SaveAll())
+            {
                 return true;
             }
             return false;
@@ -75,7 +78,7 @@ namespace Cardiohelp.DAL.Implementations
             _context.Update(entity);
         }
 
-          public int deletePDF(int id)
+        public int deletePDF(int id)
         {
             var id_string = id.ToString();
             var pathToFile = _env.ContentRootPath + "/assets/pdf/";

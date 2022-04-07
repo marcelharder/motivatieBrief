@@ -26,13 +26,14 @@ import { PersonaliaComponent } from './personalia/personalia.component';
 import { PersonaliaResolver } from './_resolvers/personalia.resolver';
 import { DropdownService } from './_services/dropdown.service';
 import { CommonModule } from '@angular/common';
+import { KoperComponent } from './koper/koper.component';
 
 
 
 export function tokenGetter() { return localStorage.getItem('token'); }
 
 @NgModule({
-   declarations: [				
+   declarations: [					
       AppComponent,
       HomeComponent,
       AboutComponent,
@@ -42,7 +43,8 @@ export function tokenGetter() { return localStorage.getItem('token'); }
       Brief_detailsComponent,
       MakelaarComponent,
       PhotoeditorComponent,
-      PersonaliaComponent
+      PersonaliaComponent,
+      KoperComponent
    ],
    imports: [
       HttpClientModule,

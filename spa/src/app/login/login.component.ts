@@ -41,7 +41,7 @@ export class LoginComponent implements OnInit {
                     // this will only change selectable items in navbar
                  }
                 else {
-                    this.router.navigate(['/brief_details/' + this.auth.decodedToken.nameid]);
+                    this.router.navigate(['/koper/' + this.auth.decodedToken.nameid]);
                 }
             }
 

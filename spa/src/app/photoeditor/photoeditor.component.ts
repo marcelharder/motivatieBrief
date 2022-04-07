@@ -47,7 +47,6 @@ initializeUploader() {
 
     this.uploader.onSuccessItem = (item, response, status, headers) => {
         if (response) {
-            debugger;
             const res: any = JSON.parse(response);
            if (this.userId !== 0) { this.getMemberPhotoChange.emit(res.photoUrl); }
         }

@@ -14,15 +14,15 @@ namespace api.DAL.code
 {
     public class SpecialMaps
     {
-        
+
         private IHospitalRepository _hos;
         private IHttpContextAccessor _http;
         private IMapper _map;
         private Dropdownlists _drops;
         public SpecialMaps(
-        IHttpContextAccessor http, 
-        IHospitalRepository hos, 
-        IMapper map, 
+        IHttpContextAccessor http,
+        IHospitalRepository hos,
+        IMapper map,
         Dropdownlists drops)
         {
             _http = http;
@@ -30,10 +30,10 @@ namespace api.DAL.code
             _drops = drops;
             _hos = hos;
         }
-        public  User mapToUserAsync(UserForUpdateDto help, User h)
+        public User mapToUserAsync(UserForUpdateDto help, User h)
         {
             h.active = help.active;
-           // h.center_id = await this.saveHospitalNameAsNumber(help.center_id);
+            // h.center_id = await this.saveHospitalNameAsNumber(help.center_id);
             h.contributor_id = help.contributor_id;
             h.Id = help.Id;
             h.paid_till = help.paid_till;
@@ -53,7 +53,7 @@ namespace api.DAL.code
             h.username = help.username;
             h.photoUrl = help.photoUrl;
             return h;
-        } 
+        }
         // public UserForReturnDto mapToUserForReturn(User help){ return _map.Map<User, UserForReturnDto>(help);}
         public List<CardioForReturn> mapToListOfmessageToReturnFromListOfMessageAsync(PagedList<Cardio> messagesFromRepo)
         {
@@ -85,14 +85,25 @@ namespace api.DAL.code
         {
             return _map.Map<CardioDetailsDTO, Cardio>(ctd, c);
         }
-        public hospital mapToHospitalAsync(hospitalForUpdateDTO td, hospital hospital_before){
-          return _map.Map<hospitalForUpdateDTO, hospital>(td,hospital_before);
+        public hospital mapToHospitalAsync(hospitalForUpdateDTO td, hospital hospital_before)
+        {
+            return _map.Map<hospitalForUpdateDTO, hospital>(td, hospital_before);
         }
-        public HemoForReturnDTO mapToHemoForReturn(Cardio c){
+        public HemoForReturnDTO mapToHemoForReturn(Cardio c)
+        {
             return _map.Map<Cardio, HemoForReturnDTO>(c);
         }
-         public BriefForReturnDto mapToBriefForReturn(Brief c){
+        public BriefForReturnDto mapToBriefForReturn(Brief c)
+        {
             return _map.Map<Brief, BriefForReturnDto>(c);
+        }
+        public personaliaForReturnDto mapPersonaliaForReturn(Personalia c)
+        {
+            return _map.Map<Personalia, personaliaForReturnDto>(c);
+        }
+        public Personalia mapToPersonalia(personaliaForReturnDto pr, Personalia c)
+        {
+            return _map.Map<personaliaForReturnDto, Personalia>(pr, c);
         }
         public int getCurrentUserId()
         {
@@ -100,7 +111,7 @@ namespace api.DAL.code
             return Convert.ToInt32(userId);
         }
 
-        
+
         private string getIndication(int indication)
         {
             var help = "";
@@ -109,13 +120,16 @@ namespace api.DAL.code
             help = ret.Find(x => x.value == indication).description;
             return help;
         }
-        private async Task<string> getNameOfHospitalAsync(string center_id){
-            
-             if(String.IsNullOrEmpty(center_id)){return "Choose";}
-             else{
-             var help = Convert.ToInt32(center_id);
-             var selectedHospital = await _hos.getHospitalDetails(help);
-             return selectedHospital.name;}
+        private async Task<string> getNameOfHospitalAsync(string center_id)
+        {
+
+            if (String.IsNullOrEmpty(center_id)) { return "Choose"; }
+            else
+            {
+                var help = Convert.ToInt32(center_id);
+                var selectedHospital = await _hos.getHospitalDetails(help);
+                return selectedHospital.name;
+            }
         }
     }
 

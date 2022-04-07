@@ -31,6 +31,9 @@ namespace api.DAL.Mappings
 
             CreateMap<Brief, BriefForReturnDto>(); 
 
+            CreateMap<Personalia, personaliaForReturnDto>(); 
+            CreateMap<personaliaForReturnDto, Personalia>().ForMember(dest => dest.Id, src => src.Ignore()); ; 
+
 
 
 

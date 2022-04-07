@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using api.DAL.code;
 using api.DAL.dtos;
 using api.DAL.Interfaces;
 using api.DAL.models;
@@ -12,10 +13,12 @@ namespace api.DAL.implementations
     public class Persona : IPersonalia
     {
          private dataContext _context;
+         private SpecialMaps _special;
 
-        public Persona(dataContext context)
+        public Persona(dataContext context, SpecialMaps special)
         {
             _context = context;
+            _special = special;
         }
         public void Add<T>(T entity) where T : class
         {
@@ -64,7 +67,10 @@ namespace api.DAL.implementations
 
         public async Task<bool> savePer(personaliaForReturnDto br)
         {
-            Update(br);
+
+            Personalia per = await _context.Personas.FirstOrDefaultAsync(x => x.Id == br.Id);
+            Personalia updated_personalia = _special.mapToPersonalia(br,per);
+            Update(updated_personalia);
             if(await SaveAll()){
                 return true;
             }

@@ -7,7 +7,7 @@ namespace api.DAL.dtos
 {
     public class personaliaForReturnDto
     {
-         public int PersId { get; set; }
+         public int Id { get; set; }
         public string lastname { get; set; }
         public string lastname_partner { get; set; }
         public string first_names { get; set; }

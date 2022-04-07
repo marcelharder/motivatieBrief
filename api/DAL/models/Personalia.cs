@@ -8,7 +8,6 @@ namespace api.DAL.models
 {
     public class Personalia
     {
-        [Key]
         public int PersId { get; set; }
         public int Id { get; set; }
         public User User { get; set; }

@@ -25,7 +25,9 @@ export class MakelaarComponent implements OnInit {
   }
 
   showBrief(){this.router.navigate(['/brief_details/' + this.currentKoper]);}
-  showPersonalia(){this.router.navigate(['/personalia_details/' + this.currentKoper]);}
+  showPersonalia(){
+    debugger;
+    this.router.navigate(['/personalia_details/' + this.currentKoper]);}
 
   Cancel(){this.alertify.message("Cancel")}
   FindEntry(){

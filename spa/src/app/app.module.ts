@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -22,13 +22,17 @@ import { BriefResolver } from './_resolvers/brief.resolver';
 import { PhotoeditorComponent } from './photoeditor/photoeditor.component';
 
 import {FileUploadModule} from 'ng2-file-upload';
+import { PersonaliaComponent } from './personalia/personalia.component';
+import { PersonaliaResolver } from './_resolvers/personalia.resolver';
+import { DropdownService } from './_services/dropdown.service';
+import { CommonModule } from '@angular/common';
 
 
 
 export function tokenGetter() { return localStorage.getItem('token'); }
 
 @NgModule({
-   declarations: [			
+   declarations: [				
       AppComponent,
       HomeComponent,
       AboutComponent,
@@ -37,12 +41,15 @@ export function tokenGetter() { return localStorage.getItem('token'); }
       LoginComponent,
       Brief_detailsComponent,
       MakelaarComponent,
-      PhotoeditorComponent
+      PhotoeditorComponent,
+      PersonaliaComponent
    ],
    imports: [
       HttpClientModule,
       FileUploadModule,
       FormsModule,
+      ReactiveFormsModule,
+      CommonModule,
       BrowserModule,
       FormsModule,
       AppRoutingModule,
@@ -55,7 +62,7 @@ export function tokenGetter() { return localStorage.getItem('token'); }
          }
      }),
    ],
-   providers: [AlertifyService, AuthService, AuthGuard, BriefResolver],
+   providers: [AlertifyService, AuthService, AuthGuard, BriefResolver, PersonaliaResolver, DropdownService],
    bootstrap: [
       AppComponent
    ]

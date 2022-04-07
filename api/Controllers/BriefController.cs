@@ -16,7 +16,7 @@ namespace Cardiohelp.Controllers
     [Authorize]
     public class BriefController : ControllerBase
     {
-       private IUser _user;
+        private IUser _user;
         private SpecialMaps _special;
 
         private readonly IOptions<api.Helpers.CloudinarySettings> _cloudinaryConfig;
@@ -67,7 +67,7 @@ namespace Cardiohelp.Controllers
         }
 
         [HttpPost]
-        [Route("api/addPhoto/{id}")]
+        [Route("api/addBriefPhoto/{id}")]
         public async Task<IActionResult> PostPhoto(int id,PhotoForCreationDto photoDto)
         {
 

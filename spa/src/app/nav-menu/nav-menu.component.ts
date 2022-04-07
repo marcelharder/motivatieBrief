@@ -11,9 +11,9 @@ import { Router } from '@angular/router';
 export class NavMenuComponent implements OnInit {
     isExpanded = false;
     model: any = {};
-
+    admin = false;
+  
    
-    loginFailed = false;
 
     constructor(public auth: AuthService, private alertify: AlertifyService, private router: Router) { }
 
@@ -25,39 +25,24 @@ export class NavMenuComponent implements OnInit {
         this.isExpanded = !this.isExpanded;
     }
     ngOnInit() {
-       
+        this.auth.UserRole.subscribe((next)=>{ if(next === 'admin'){this.admin = true} else {this.admin = false;}; });
     }
 
     
     loggedIn() { return this.auth.loggedIn(); }
 
-    adminLogged(){
-        let currentRole = "";
-        this.auth.UserRole.subscribe((next)=>{
-            currentRole = next; });
-        if(currentRole === 'admin'){return true;} else {return false;} ;
-    }
+    adminLogged(){ if(this.admin)return true;{} }
 
     logIn(){this.router.navigate(['/login']);}
 
     logOut() {
-        this.router.navigate(['/home']);
+        this.router.navigate(['/']);
         this.alertify.message('Logged out');
         localStorage.removeItem('token');
     }
 
-    showRegister() {
-        this.loginFailed = false;
-        this.router.navigate(['/register']);
-    }
+   
 
-    showProfile() {
-
-        this.router.navigate(['/profile/', +this.auth.decodedToken.nameid]);
-    }
-
-    loginFail() {
-        if (this.loginFailed === true) { return true; } else { return false; }
-    }
+   
 
 }

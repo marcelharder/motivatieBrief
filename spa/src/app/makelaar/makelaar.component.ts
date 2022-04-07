@@ -10,6 +10,8 @@ import { UserService } from '../_services/user.service';
 })
 export class MakelaarComponent implements OnInit {
   email = "";
+  koper = 0;
+  currentKoper = 0;
 
   constructor(private alertify: AlertifyService,
     private us: UserService,
@@ -18,12 +20,22 @@ export class MakelaarComponent implements OnInit {
   ngOnInit() {
   }
 
+  buyerFound(){
+    if(this.koper === 1){return true;}
+  }
+
+  showBrief(){this.router.navigate(['/brief_details/' + this.currentKoper]);}
+  showPersonalia(){
+    debugger;
+    this.router.navigate(['/personalia_details/' + this.currentKoper]);}
+
   Cancel(){this.alertify.message("Cancel")}
   FindEntry(){
     this.us.getUserByEmail(this.email).subscribe((next)=>{
       if(next){
-        // go to the brief-details page met the correct userid
-        this.router.navigate(['/brief_details/' + next.id]);
+       // this buyer was found, show buyerdetails page
+       this.koper = 1;
+       this.currentKoper = next.id;
       }
       else {this.alertify.message(this.email + " niet gevonden");}
     }, error => this.alertify.error(error))

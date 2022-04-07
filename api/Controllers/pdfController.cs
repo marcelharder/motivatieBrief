@@ -21,7 +21,7 @@ namespace Cardiohelp.Controllers
             _cpbr = cpbr;
 
         }
-        
+        [AllowAnonymous]
         [Route("api/getPDF/{id}")]
         public async Task<IActionResult> Get(int id)
         {

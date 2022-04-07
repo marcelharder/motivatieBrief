@@ -61,6 +61,7 @@ namespace api
             services.AddScoped<IHospitalRepository, HospitalRepository>();
             services.AddScoped<IBrief, Cardiohelp.DAL.Implementations.Brief>();
             services.AddScoped<IComposeBrief, composePdf>();
+            services.AddScoped<IPersonalia, Persona>();
             services.AddScoped<Dropdownlists>();
             services.AddScoped<SpecialMaps>();
             services.AddScoped<CSVProducer>();

@@ -13,7 +13,7 @@ constructor(private http: HttpClient) { }
 
 
 getPersonalia(koper:number){return this.http.get<personalia>(this.baseUrl + 'getPersonalia/' + koper)};
-saveBrief(br: personalia){return this.http.post(this.baseUrl + 'updatePersonalia', br)};
+savePersonalia(br: personalia){return this.http.post(this.baseUrl + 'updatePersonalia', br)};
 
 
 }

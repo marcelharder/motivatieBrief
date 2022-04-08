@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component, Input, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { personalia } from '../_models/personalia';
 import { dropItem } from '../_models/dropItem';
 import { DropdownService } from '../_services/dropdown.service';
+import { PersonaliaService } from '../_services/personalia.service';
 
 @Component({
   selector: 'app-personalia',
@@ -10,27 +11,28 @@ import { DropdownService } from '../_services/dropdown.service';
   styleUrls: ['./personalia.component.css']
 })
 export class PersonaliaComponent implements OnInit {
-  per:personalia;
+  @Input() pe: personalia;
   optionsYN: Array<dropItem> = [];
 
-  constructor(private route: ActivatedRoute, private drops: DropdownService) { }
+  constructor(
+    private route: ActivatedRoute,
+    private router:Router, 
+    private persservice: PersonaliaService) { }
 
   ngOnInit() {
-    this.route.data.subscribe((data: {per: personalia})=>{
-      this.per = data.per;
-    });
-    this.loadDrops();
+   
+   this.loadDrops();
   }
 
   loadDrops(){
-    let d = JSON.parse(localStorage.getItem('YN'));
-    if (d == null || d.length === 0) {
-        this.drops.getYNOptions().subscribe((response) => {
-            this.optionsYN = response; localStorage.setItem('YN', JSON.stringify(response));
-        });
-    } else {
-        this.optionsYN = JSON.parse(localStorage.getItem('YN'));
-    }
+   this.optionsYN.push({value:1, description: 'kies'});
+   this.optionsYN.push({value:2, description: 'ja'});
+   this.optionsYN.push({value:2, description: 'nee'});
   }
+
+  save(){this.persservice.savePersonalia(this.pe).subscribe(()=>{
+    this.router.navigate(['/makelaar']);
+  })}
+  cancel(){ this.router.navigate(['/makelaar']);}
 
 }

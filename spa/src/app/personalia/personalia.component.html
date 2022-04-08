@@ -1,41 +1,66 @@
-<form ngForm name='help'>
-<div class="card">
-  <div class="header">
-    <span>Opgaaf personalia</span>
-    <span style="float:right">Rigter makelaars</span>
-  </div>
-  <div class="card-body">
-    <div class="row">
-      <div class="col-sm-8">
-        <div class="row">
-          <div class="col-sm-4"></div>
-          <div class="col-sm-4">Koper</div>
-          <div class="col-sm-4">Echtgeno(o)t(e)/Partner</div>
-        </div>
-        <div class="row">
-          <div class="col-sm-4">Echtgeno(o)t(e)/Partner</div>
-          <div class="col-sm-4">-</div>
-          <div class="col-sm-4">
+
+  <div class="card">
+    <div class="header mb-1">
+      <button class="btn btn-success btn-xs ml-1" (click)="save()" style="float:right">Save</button>
+      <button class="btn btn-warning btn-xs ml-1" (click)="cancel()" style="float:right">Cancel</button>
+
+    </div>
+    <div class="card-body">
+      <div class="row">
+        <div class="col-sm-6">  <div class="card">
+          <div class="card-header">
+            <h3><span>Koper</span></h3>
+          </div>
+          <div class="card-body">
             <div class="row">
-              <div class="col-sm-6">mede koper</div>
-              <div class="col-sm-6"><select [(ngModel)]="per.partner_medekoper" name="dis12" class="form-control">
-                <option *ngFor="let an of optionsYN" [value]=an.value>{{ an.description }}</option>
-              </select></div>
+              <div class="col-sm-6">Achternaam</div>
+              <div class="col-sm-6"><input  class="form-control"></div>
             </div>
+          </div>
+        </div></div>
+        <div class="col-sm-6"><div class="card">
+          <div class="card-header">
+            <h3><span>Echtgeno(o)t(e)/Partner</span></h3>
+          </div>
+          <div class="card-body">
+            <div class="row">
+              <div class="col-sm-6">Achternaam</div>
+              <div class="col-sm-6"><input class="form-control"></div>
             </div>
-        </div>
-        <div class="row">
-          <div class="col-sm-4">Achthernaam</div>
-          <div class="col-sm-4"><input [(ngModel)]="per.lastname" name="name-01"></div>
-          <div class="col-sm-4"><input [(ngModel)]="per.lastname_partner" name="name-02"></div>
-        </div>
+          </div>
+        </div></div>
+       
       </div>
-      <div class="col-sm-4"></div>
+
+      <div class="row">
+        <div class="col-sm-6"><div class="card">
+          <div class="card-header">
+            <h3><span>Overig</span></h3>
+          </div>
+          <div class="card-body">
+            <div class="row">
+              <div class="col-sm-12">
+                <div class="row">
+                  <div class="col-sm-8">Echtgeno(o)t(e)/Partner is mede koper:</div>
+                  <div class="col-sm-4"><select   class="form-control">
+                      <option *ngFor="let an of optionsYN" [value]=an.value>{{ an.description }}</option>
+                    </select></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div></div>
+        <div class="col-sm-6"></div>
+      </div>
+
+
+
+
+
+
+
+    
     </div>
 
+    <div class="card-footer"></div>
   </div>
-  <div class="card-footer"></div>
-</div>
-</form>
-
-

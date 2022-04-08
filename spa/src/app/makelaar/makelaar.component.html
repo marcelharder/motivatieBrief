@@ -1,4 +1,4 @@
-<div>
+
     <form id="minForm" ngForm>
     <div class="card" *ngIf="!buyerFound()">
         <div class="card-header"></div>
@@ -12,25 +12,22 @@
     <div class="card" *ngIf="buyerFound()">
         <div class="card-header"></div>
         <div class="card-body">
-            <div class="row">
-                <div class="col-sm-6"><button type="button" class="btn btn-secondary btn-xs mb-1" (click)="showPersonalia()">Personalia</button></div>
-                <div class="col-sm-6"></div>
+            <div class="tab-panel">
+                <tabset class="member-tabset">
+                    <tab heading="Opgaaf personalia">
+                        <app-personalia [pe]="opgaaf" ></app-personalia>
+                    </tab>
+                    <tab heading="Motivatie brief">
+                        <app-brief_details [br]="mot" ></app-brief_details>
+                    </tab>
+    
+                </tabset>
+    
             </div>
-            <div class="row">
-                <div class="col-sm-6"><button type="button" class="btn btn-secondary btn-xs"(click)="showBrief()">Motivatie brief</button></div>
-                <div class="col-sm-6"></div>
-            </div>
+
+
         </div>
         <div class="card-footer"></div>
     </div>
+    </form>
 
-<div class="tab-panel">
-    <tabset class="member-tabset">
-      
-      <tab heading="Details">
-        
-        </tab>
-    </tabset>
-</div>
-
-</div>

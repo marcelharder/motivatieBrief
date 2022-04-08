@@ -25,14 +25,14 @@
     "core-js": "^2.5.4",
     "font-awesome": "^4.7.0",
     "ng2-file-upload": "^1.4.0",
-    "ngx-bootstrap": "^8.0.0",
+    "ngx-bootstrap": "^5.2.2",
     "rxjs": "~6.3.3",
     "tslib": "^1.9.0",
     "zone.js": "~0.8.26"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.13.0",
-    "@angular/cli": "~7.3.5",
+    "@angular/cli": "^12.2.15",
     "@angular/compiler-cli": "~7.2.0",
     "@angular/language-service": "~7.2.0",
     "@types/jasmine": "~2.8.8",

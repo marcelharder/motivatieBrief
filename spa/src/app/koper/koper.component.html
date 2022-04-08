@@ -1,0 +1,16 @@
+<div class="card">
+  <div class="card-header"></div>
+  <div class="card-body">
+    <div class="row">
+      <div class="col-sm-6"><button type="button" (click)="mot()" >Motivatie brief</button></div>
+      <div class="col-sm-6"><button type="button" (click)="pers()" >Personalia</button></div>
+    </div>
+    <div *ngIf="showMotivatie()">
+      <app-brief_details></app-brief_details>
+    </div>
+    <div *ngIf="showPersonalia()">
+      <app-personalia></app-personalia>
+    </div>
+  </div>
+  <div class="card-footer"></div>
+</div>

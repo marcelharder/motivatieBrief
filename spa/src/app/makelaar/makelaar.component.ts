@@ -20,16 +20,13 @@ export class MakelaarComponent implements OnInit {
   ngOnInit() {
   }
 
-  buyerFound(){
-    if(this.koper === 1){return true;}
-  }
+  buyerFound(){if(this.koper === 1){return true;}}
 
-  showBrief(){this.router.navigate(['/brief_details/' + this.currentKoper]);}
-  showPersonalia(){
-    debugger;
-    this.router.navigate(['/personalia_details/' + this.currentKoper]);}
+  showBrief(){     this.router.navigate(['/brief_details/'      + this.currentKoper]);}
+  showPersonalia(){this.router.navigate(['/personalia_details/' + this.currentKoper]);}
 
-  Cancel(){this.alertify.message("Cancel")}
+  Cancel(){this.router.navigate(['/']);}
+
   FindEntry(){
     this.us.getUserByEmail(this.email).subscribe((next)=>{
       if(next){

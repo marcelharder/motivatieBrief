@@ -10,6 +10,7 @@ import { MakelaarComponent } from './makelaar/makelaar.component';
 import { BriefResolver } from './_resolvers/brief.resolver';
 import { PersonaliaComponent } from './personalia/personalia.component';
 import { PersonaliaResolver } from './_resolvers/personalia.resolver';
+import { KoperComponent } from './koper/koper.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -23,22 +24,8 @@ const routes: Routes = [
       children: [
         { path: 'brief_details/:id', component: Brief_detailsComponent, resolve:{br: BriefResolver} },  
         { path: 'makelaar', component: MakelaarComponent },
+        { path: 'koper/:id', component: KoperComponent },
         { path: 'personalia_details:/id', component: PersonaliaComponent, resolve:{per: PersonaliaResolver} }
-
-
-
-      /*  { path: 'profile', component: ProfileComponent, resolve: { user: ProfileResolver }, canDeactivate: [PreventUnsavedChanges] },
-          { path: 'surgeon', component: SurgeonComponent },
-          { path: 'admin', component: AdminComponent },
-          { path: 'companyadmin', component: CompanyadminComponent },
-         
-          { path: 'superuser', component: SuperuserComponent },
-          { path: 'tutorials', component: TutorialsComponent },
-          { path: 'companysettings/:id', component: SettingsCompanyComponent },
-          { path: 'brief_details/:id', component: ExpiryComponent },
-          { path: 'addProduct/:id', component: AddProductComponent, resolve: {valve: ValveResolver} },
- */
-
       ]
   },
   { path: '**', redirectTo: '', pathMatch: 'full' }

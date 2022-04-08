@@ -53,7 +53,7 @@ export class Brief_detailsComponent implements OnInit {
     this.showPhoto = 1;
     this.alertify.message("uploading picture comes here ....");}
 
-  cancel(){this.alertify.message("cancel");}
+  cancel(){this.router.navigate(['/makelaar'])}
 
   removeKoper(){this.alertify.message("remove koper now");}
 

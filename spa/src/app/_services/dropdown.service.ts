@@ -47,7 +47,7 @@ export class DropdownService {
     getCreatOptions() { return this.http.get<dropItem[]>(this.baseUrl + 'creat_options'); }
 
     getTimingOptions() { return this.http.get<dropItem[]>(this.baseUrl + 'timing_options'); }
-    getYNOptions() { return this.http.get<dropItem[]>(this.baseUrl + 'optionsYN'); }
+    getYNOptions() { return this.http.get<dropItem[]>(this.baseUrl + 'dropdownlist/68'); }
     getHours() { return this.http.get<string[]>(this.baseUrl + 'dropHours'); }
     getMins() { return this.http.get<string[]>(this.baseUrl + 'dropMins'); }
     getUrgentOptions() { return this.http.get<dropItem[]>(this.baseUrl + 'urgent_options'); }

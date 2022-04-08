@@ -7,15 +7,74 @@
     </div>
     <div class="card-body">
       <div class="row">
-        <div class="col-sm-6">  <div class="card">
+        <div class="col-sm-6"> 
+           <div class="card">
           <div class="card-header">
             <h3><span>Koper</span></h3>
           </div>
           <div class="card-body">
             <div class="row">
               <div class="col-sm-6">Achternaam</div>
-              <div class="col-sm-6"><input  class="form-control"></div>
+              <div class="col-sm-6"><input  [(ngModel)]="pe.lastname" name="ln1"
+                 class="form-control"></div>
             </div>
+            <div class="row">
+              <div class="col-sm-6">Volledige voornamen</div>
+              <div class="col-sm-6"><input  [(ngModel)]="pe.first_names" name="fn1"
+                 class="form-control"></div>
+            </div>
+            <div class="row">
+              <div class="col-sm-6">Geboorteplaats</div>
+              <div class="col-sm-6"><input  [(ngModel)]="pe.first_names" name="fn1"
+                 class="form-control"></div>
+            </div>
+            <div class="row">
+              <div class="col-sm-6">Geboorte datum</div>
+              <div class="col-sm-6"><input  [(ngModel)]="pe.first_names" name="fn1"
+                 class="form-control"></div>
+            </div>
+            <div class="row">
+              <div class="col-sm-6">Straat</div>
+              <div class="col-sm-6"><input  [(ngModel)]="pe.first_names" name="fn1"
+                 class="form-control"></div>
+            </div>
+            <div class="row">
+              <div class="col-sm-6">Postcode</div>
+              <div class="col-sm-6"><input  [(ngModel)]="pe.first_names" name="fn1"
+                 class="form-control"></div>
+            </div>
+            <div class="row">
+              <div class="col-sm-6">Woonplaats</div>
+              <div class="col-sm-6"><input  [(ngModel)]="pe.first_names" name="fn1"
+                 class="form-control"></div>
+            </div>
+            <div class="row">
+              <div class="col-sm-6">Telefoon thuis</div>
+              <div class="col-sm-6"><input  [(ngModel)]="pe.first_names" name="fn1"
+                 class="form-control"></div>
+            </div>
+            <div class="row">
+              <div class="col-sm-6">Mobiele nummer</div>
+              <div class="col-sm-6"><input  [(ngModel)]="pe.first_names" name="fn1"
+                 class="form-control"></div>
+            </div>
+            <div class="row">
+              <div class="col-sm-6">E-mail adres</div>
+              <div class="col-sm-6"><input  [(ngModel)]="pe.first_names" name="fn1"
+                 class="form-control"></div>
+            </div>
+            <div class="row">
+              <div class="col-sm-6">Soort legitimatiebewijs</div>
+              <div class="col-sm-6"><select   class="form-control">
+                <option *ngFor="let an of optionsYN" [value]=an.value>{{ an.description }}</option>
+              </select></div>
+            </div>
+            <div class="row">
+              <div class="col-sm-6">Nummer Legitimatiebewijs</div>
+              <div class="col-sm-6"><input  [(ngModel)]="pe.first_names" name="fn1"
+                 class="form-control"></div>
+            </div>
+            
           </div>
         </div></div>
         <div class="col-sm-6"><div class="card">
@@ -25,7 +84,62 @@
           <div class="card-body">
             <div class="row">
               <div class="col-sm-6">Achternaam</div>
-              <div class="col-sm-6"><input class="form-control"></div>
+              <div class="col-sm-6"><input [(ngModel)]="pe.lastname_partner" name="ln2" class="form-control"></div>
+            </div>
+            <div class="row">
+              <div class="col-sm-6">Volledige voornamen</div>
+              <div class="col-sm-6"><input [(ngModel)]="pe.first_names_partner" name="fn2" class="form-control"></div>
+            </div>
+            <div class="row">
+              <div class="col-sm-6">Geboorteplaats</div>
+              <div class="col-sm-6"><input  [(ngModel)]="pe.first_names" name="fn1"
+                 class="form-control"></div>
+            </div>
+            <div class="row">
+              <div class="col-sm-6">Geboorte datum</div>
+              <div class="col-sm-6"><input  [(ngModel)]="pe.first_names" name="fn1"
+                 class="form-control"></div>
+            </div>
+            <div class="row">
+              <div class="col-sm-6">Straat</div>
+              <div class="col-sm-6"><input  [(ngModel)]="pe.first_names" name="fn1"
+                 class="form-control"></div>
+            </div>
+            <div class="row">
+              <div class="col-sm-6">Postcode</div>
+              <div class="col-sm-6"><input  [(ngModel)]="pe.first_names" name="fn1"
+                 class="form-control"></div>
+            </div>
+            <div class="row">
+              <div class="col-sm-6">Woonplaats</div>
+              <div class="col-sm-6"><input  [(ngModel)]="pe.first_names" name="fn1"
+                 class="form-control"></div>
+            </div>
+            <div class="row">
+              <div class="col-sm-6">Telefoon thuis</div>
+              <div class="col-sm-6"><input  [(ngModel)]="pe.first_names" name="fn1"
+                 class="form-control"></div>
+            </div>
+            <div class="row">
+              <div class="col-sm-6">Mobiele nummer</div>
+              <div class="col-sm-6"><input  [(ngModel)]="pe.first_names" name="fn1"
+                 class="form-control"></div>
+            </div>
+            <div class="row">
+              <div class="col-sm-6">E-mail adres</div>
+              <div class="col-sm-6"><input  [(ngModel)]="pe.first_names" name="fn1"
+                 class="form-control"></div>
+            </div>
+            <div class="row">
+              <div class="col-sm-6">Soort legitimatiebewijs</div>
+              <div class="col-sm-6"><select   class="form-control">
+                <option *ngFor="let an of optionsYN" [value]=an.value>{{ an.description }}</option>
+              </select></div>
+            </div>
+            <div class="row">
+              <div class="col-sm-6">Nummer Legitimatiebewijs</div>
+              <div class="col-sm-6"><input  [(ngModel)]="pe.first_names" name="fn1"
+                 class="form-control"></div>
             </div>
           </div>
         </div></div>
@@ -33,24 +147,72 @@
       </div>
 
       <div class="row">
-        <div class="col-sm-6"><div class="card">
+        <div class="col-sm-12"><div class="card">
           <div class="card-header">
             <h3><span>Overig</span></h3>
           </div>
           <div class="card-body">
             <div class="row">
-              <div class="col-sm-12">
+              <div class="col-sm-6">
                 <div class="row">
                   <div class="col-sm-8">Echtgeno(o)t(e)/Partner is mede koper:</div>
                   <div class="col-sm-4"><select   class="form-control">
                       <option *ngFor="let an of optionsYN" [value]=an.value>{{ an.description }}</option>
                     </select></div>
                 </div>
+                <div class="row">
+                  <div class="col-sm-8">Burgelijke staat:</div>
+                  <div class="col-sm-4"><select   class="form-control">
+                      <option *ngFor="let an of optionsBurgerlijkeStaat" [value]=an.value>{{ an.description }}</option>
+                    </select></div>
+                </div>
+                <div class="row">
+                  <div class="col-sm-8">Geregistreerd partnershap:</div>
+                  <div class="col-sm-4"><select   class="form-control">
+                      <option *ngFor="let an of optionsYN" [value]=an.value>{{ an.description }}</option>
+                    </select></div>
+                </div>
+                <div class="row">
+                  <div class="col-sm-8">Huwlijksgoederenrecht:</div>
+                  <div class="col-sm-4"><select   class="form-control">
+                      <option *ngFor="let an of optionsHuwlijksgoederen" [value]=an.value>{{ an.description }}</option>
+                    </select></div>
+                </div>
+                <div class="row">
+                  <div class="col-sm-8">Samenwonend:</div>
+                  <div class="col-sm-4"><select   class="form-control">
+                      <option *ngFor="let an of optionsYN" [value]=an.value>{{ an.description }}</option>
+                    </select></div>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="row">
+                  <div class="col-sm-8">
+                    <div class="row">
+                      <div class="col-sm-12">Notariskeuze:</div>
+                    </div>
+                    <div class="row">
+                      <div class="col-sm-12"><input  class="form-control"></div>
+                    </div>
+                    <div class="row">
+                      <div class="col-sm-12"><input  class="form-control"></div>
+                    </div>
+                    <div class="row">
+                      <div class="col-sm-12"><input  class="form-control"></div>
+                    </div>
+                    </div>
+                  <div class="col-sm-4"></div>
+                </div>
+                <div class="row">
+                  <div class="col-sm-5">Bedrag roerende zaken:</div>
+                  <div class="col-sm-5"><input  class="form-control"></div>
+                  <div class="col-sm-2">Euro</div>
+                </div>
               </div>
             </div>
           </div>
-        </div></div>
-        <div class="col-sm-6"></div>
+        </div>
+      </div>
       </div>
 
 

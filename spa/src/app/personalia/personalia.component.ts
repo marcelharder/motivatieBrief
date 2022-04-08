@@ -13,6 +13,8 @@ import { PersonaliaService } from '../_services/personalia.service';
 export class PersonaliaComponent implements OnInit {
   @Input() pe: personalia;
   optionsYN: Array<dropItem> = [];
+  optionsBurgerlijkeStaat: Array<dropItem> = [];
+  optionsHuwlijksgoederen: Array<dropItem> = [];
 
   constructor(
     private route: ActivatedRoute,

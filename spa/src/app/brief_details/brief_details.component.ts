@@ -14,6 +14,7 @@ import { PdfService } from '../_services/pdf.service';
 })
 export class Brief_detailsComponent implements OnInit {
   @Input() br: Brief;
+  
   showPhoto = 0;
   baseUrl= environment.apiUrl;
   mkrole = 0;

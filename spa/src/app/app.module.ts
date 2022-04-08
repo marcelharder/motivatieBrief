@@ -26,6 +26,7 @@ import { PersonaliaComponent } from './personalia/personalia.component';
 import { PersonaliaResolver } from './_resolvers/personalia.resolver';
 import { DropdownService } from './_services/dropdown.service';
 import { CommonModule } from '@angular/common';
+import {TabsModule} from 'ngx-bootstrap/tabs';
 
 
 
@@ -54,6 +55,7 @@ export function tokenGetter() { return localStorage.getItem('token'); }
       FormsModule,
       AppRoutingModule,
       BrowserAnimationsModule,
+      TabsModule.forRoot(),
       JwtModule.forRoot({
          config: {
              tokenGetter: tokenGetter,
